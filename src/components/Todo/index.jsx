@@ -3,7 +3,7 @@ import useTodo from '../../hooks/useTodo';
 import Task from '../Task';
 
 function Todo() {
-  const { tasks, addTask, setIsDone } = useTodo([
+  const { tasks, addTask, setIsDone, deleteTask } = useTodo([
     { id: '1', content: 'test task', isDone: false },
   ]);
   const onSubmit = (values, formikBag) => {
@@ -25,7 +25,12 @@ function Todo() {
         <h3>List tasks</h3>
         <ol>
           {tasks.map((task) => (
-            <Task key={task.id} task={task} setIsDone={setIsDone} />
+            <Task
+              key={task.id}
+              task={task}
+              setIsDone={setIsDone}
+              deleteTask={deleteTask}
+            />
           ))}
         </ol>
       </div>
