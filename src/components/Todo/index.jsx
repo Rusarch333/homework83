@@ -1,15 +1,20 @@
 import { Formik, Form, Field } from 'formik';
 import useTodo from '../../hooks/useTodo';
+import Task from '../Task';
 
 function Todo() {
-  const { tasks, addTask } = useTodo([
-    { id: 1, content: 'test task', isDone: false },
+  const { tasks, addTask, setIsDone } = useTodo([
+    { id: '1', content: 'test task', isDone: false },
   ]);
+  const onSubmit = (values, formikBag) => {
+    addTask(values);
+    formikBag.resetForm();
+  };
   return (
     <section>
       <h2>Todo</h2>
       <div>
-        <Formik initialValues={{content: ''}} onSubmit={addTask}>
+        <Formik initialValues={{ content: '' }} onSubmit={onSubmit}>
           <Form>
             <Field name="content" />
             <input type="submit" value="Add" />
@@ -20,7 +25,7 @@ function Todo() {
         <h3>List tasks</h3>
         <ol>
           {tasks.map((task) => (
-            <li key={task.id}>{task.content}</li>
+            <Task key={task.id} task={task} setIsDone={setIsDone} />
           ))}
         </ol>
       </div>

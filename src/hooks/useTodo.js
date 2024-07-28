@@ -13,8 +13,12 @@ const useTodo = (initialTasks) => {
     // Передаем сначала все таски, иначе наша новая таска просто сотрет прошлые таски, и потом уже новую таску
     setTasks([...tasks, newTask]);
   }
-
-  return { tasks, setTasks, addTask };
+  const setIsDone = (id) => {
+    const newTasks = tasks.map((task) =>
+      task.id === id ? {...task, isDone:true }: task);
+    setTasks(newTasks);
+  }
+  return { tasks, setTasks, addTask, setIsDone };
 };
 
 export default useTodo;
