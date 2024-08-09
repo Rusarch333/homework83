@@ -1,6 +1,8 @@
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import useTodo from '../../hooks/useTodo';
 import Task from '../Task';
+import { taskSchema } from '../../utils/validationSchemas';
+
 
 function Todo() {
   const { tasks, addTask, setIsDone, deleteTask } = useTodo([
@@ -14,9 +16,10 @@ function Todo() {
     <section>
       <h2>Todo</h2>
       <div>
-        <Formik initialValues={{ content: '' }} onSubmit={onSubmit}>
+        <Formik initialValues={{ content: '' }} onSubmit={onSubmit} validationSchema={taskSchema}>
           <Form>
             <Field name="content" />
+            <ErrorMessage name="content" component='div' />
             <input type="submit" value="Add" />
           </Form>
         </Formik>
