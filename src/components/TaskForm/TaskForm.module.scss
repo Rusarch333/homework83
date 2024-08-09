@@ -1,0 +1,13 @@
+.container {
+  padding: 2vw;
+  background-color: pink;
+  text-align: center;
+}
+.form{
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+}
+.invalid {
+  color: red;
+}
