@@ -1,13 +1,27 @@
-.container {
-  padding: 2vw;
-  background-color: pink;
-  text-align: center;
+.form {
+  padding-left: 2rem;
+  padding-bottom: 0.5rem;
 }
-.form{
-  display: flex;
-  flex-direction: column;
-  max-width: 500px;
+.form > * {
+  display: inline-block;
+}
+.task-form__task-input,
+.custom-input__error-message {
+  width: 400px;
+}
+.task-form__task-input, .task-form__add-button {
+  border: 2px solid lightgrey;
+  vertical-align: top;
+}
+.task-form__task-input {
+  padding: 0;
+  margin: 0;
+}
+.task-form__add-button {
+  height: 19px;
+  margin-left: 1rem;
 }
 .invalid {
-  color: red;
+  border: 2px solid red;
+  outline: 2px solid red;
 }
